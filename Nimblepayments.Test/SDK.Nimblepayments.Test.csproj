@@ -6,8 +6,8 @@
     <ProjectGuid>{9E2A2AF5-FD9F-43C9-BEB1-0C3BD0E8B3BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Payments.Oneclick</RootNamespace>
-    <AssemblyName>Payments.Oneclick</AssemblyName>
+    <RootNamespace>SDK.Nimblepayments.Test</RootNamespace>
+    <AssemblyName>SDK.Nimblepayments.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

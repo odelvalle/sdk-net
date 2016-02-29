@@ -1,15 +1,15 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Payments.Oneclick
+﻿namespace SDK.Nimblepayments.Test
 {
     using System.Net;
     using System.Threading.Tasks;
 
-    using SDK.Nimblepayments;
-    using SDK.Nimblepayments.Auth;
-    using SDK.Nimblepayments.Enviroment;
-    using SDK.Nimblepayments.Payments;
-    using SDK.Nimblepayments.RestClient;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Nimblepayments;
+    using Auth;
+    using Enviroment;
+    using Payments;
+    using RestClient;
 
     [TestClass]
     public class NimblePaymentsIntegrationTest
@@ -26,11 +26,6 @@ namespace Payments.Oneclick
                 // If you are using real credentials, please... change Enviroment to NimbleEnviroment.Real
                 Enviroment = NimbleEnviroment.Sandbox
             });
-        }
-
-        [ClassInitialize()]
-        public static void ClassInit(TestContext context)
-        {
         }
 
         [TestMethod]
