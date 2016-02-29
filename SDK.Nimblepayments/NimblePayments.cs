@@ -14,11 +14,9 @@
             this.Auth = nimbleAuth;
             this.apiContext = new ApiContext(this.Auth);
 
-            this.Authorization = new AuthAuthorization(this.apiContext);
             this.Payments = new PaymentsOperations(this.apiContext);
         }
 
-        public AuthAuthorization Authorization { get; }
         public PaymentsOperations Payments { get; }
         public EnviromentManager NimbleEnviroment => this.apiContext.EnviromentManager;
 

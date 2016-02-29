@@ -2,11 +2,16 @@
 {
     using System.Net;
 
+    using SDK.Nimblepayments.Auth;
     using SDK.Nimblepayments.Exceptions;
     using SDK.Nimblepayments.RestClient;
 
-    public class NimbleBaseOperations
+    public class NimbleBaseOperations: AuthAuthorization
     {
+        internal NimbleBaseOperations(ApiContext apiContext) : base(apiContext)
+        {
+        }
+
         internal OperationResult<T> EnsureNimbleOperationResult<T>(OperationResult<NimbleApiResult<T>> apiresponse)
         {
             if (apiresponse.Exception != null)
@@ -43,6 +48,5 @@
                 Exception = result.Exception
             };
         }
-
     }
 }

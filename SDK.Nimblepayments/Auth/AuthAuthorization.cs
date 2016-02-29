@@ -6,8 +6,6 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using SDK.Nimblepayments.Base;
-    using SDK.Nimblepayments.Enviroment;
     using SDK.Nimblepayments.RestClient;
     using SDK.Nimblepayments.Exceptions;
 
@@ -21,7 +19,7 @@
             this.apiContext.NimbleAuth.BasicAuthorization = Base64Encode($"{apiContext.NimbleAuth.ClientId}:{apiContext.NimbleAuth.ClientSecrect}");
         }
 
-        public async Task<OperationResult<HttpStatusCode>> GetApplicationTsecAsync()
+        protected async Task<OperationResult<HttpStatusCode>> GetApplicationTsecAsync()
         {
             if (this.apiContext.NimbleAuth.TsecIsValid) return new OperationResult<HttpStatusCode> { HttpStatusCode = HttpStatusCode.OK };
 

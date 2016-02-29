@@ -29,29 +29,11 @@
         }
 
         [TestMethod]
-        public void TestAccessToken()
-        {
-            OperationResult<HttpStatusCode> result = null;
-
-            Task.Run(async () =>
-            {
-                result = await this.nimbleApi.Authorization.GetApplicationTsecAsync();
-                
-            }).GetAwaiter().GetResult();
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(HttpStatusCode.OK, result.HttpStatusCode);
-
-            Assert.IsFalse(string.IsNullOrEmpty(this.nimbleApi.Auth.BasicAuthorization));
-        }
-
-        [TestMethod]
         public void TestSandboxCredentials()
         {
             OperationResult validateResult = null;
             Task.Run(async () =>
             {
-                await this.nimbleApi.Authorization.GetApplicationTsecAsync();
                 validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnviroment.Sandbox);
 
             }).GetAwaiter().GetResult();
@@ -68,7 +50,6 @@
             OperationResult validateResult = null;
             Task.Run(async () =>
             {
-                await this.nimbleApi.Authorization.GetApplicationTsecAsync();
                 validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnviroment.Real);
 
             }).GetAwaiter().GetResult();
@@ -84,7 +65,6 @@
             OperationResult<UrlPayment> operationResult = null;
             Task.Run(async () =>
             {
-                await this.nimbleApi.Authorization.GetApplicationTsecAsync();
                 operationResult = await this.nimbleApi.Payments.GetPaymentUrlAsync(new Payment
                 {
                     UrlOk = "",
@@ -109,7 +89,6 @@
             OperationResult<UrlPayment> payment = null;
             Task.Run(async () =>
             {
-                await this.nimbleApi.Authorization.GetApplicationTsecAsync();
                 payment = await this.nimbleApi.Payments.GetPaymentUrlAsync(new Payment
                 {
                     UrlOk = "",

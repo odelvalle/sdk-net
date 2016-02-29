@@ -23,7 +23,7 @@
 
         private readonly ApiContext apiContext;
 
-        internal EnviromentManager(ApiContext apiContext)
+        internal EnviromentManager(ApiContext apiContext): base(apiContext)
         {
             var currentEnviroment = apiContext.NimbleAuth.Enviroment;
             this.apiContext = apiContext;
@@ -37,8 +37,9 @@
 
         public async Task<OperationResult> VerifyCredentialsAsync(NimbleEnviroment nimbleEnviroment)
         {
-            var enviromentUrl = $"{(nimbleEnviroment == NimbleEnviroment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
+            await this.GetApplicationTsecAsync();
 
+            var enviromentUrl = $"{(nimbleEnviroment == NimbleEnviroment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
             var request = new RestRequest($"{enviromentUrl}/check", Method.GET);
             request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationTsec}");
 
