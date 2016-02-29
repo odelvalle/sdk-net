@@ -1,10 +1,9 @@
 ﻿namespace SDK.Nimblepayments.Enviroment
 {
-    using System.Net;
     using System.Threading.Tasks;
 
-    using SDK.Nimblepayments.Base;
-    using SDK.Nimblepayments.RestClient;
+    using Base;
+    using RestClient;
 
     public enum NimbleEnviroment
     {

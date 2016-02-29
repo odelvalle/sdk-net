@@ -2,11 +2,8 @@
 {
     using Newtonsoft.Json;
 
-    internal class NimbleApiResult<T>
+    internal class NimbleApiResult<T> : NimbleApiResult
     {
-        [JsonProperty(PropertyName = "result")]
-        public Result Operation { get; set; }
-
         [JsonProperty(PropertyName = "data")]
         public T Data { get; set; }
     }
