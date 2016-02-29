@@ -11,7 +11,7 @@ The NimblePayments SDK for NET makes it easy to add payment services to your e-c
 
 ### From source
 
-1. Download or clone this repo. You will obtain a file called ".zip". It includes the SDK and integration test.
+1. Download or clone this repo. You will obtain a file called ".zip". It include the SDK and integration tests.
 2. Unzip ".zip" and open NET.SDK.Nimblepayments solution.
 2. Build solution and run test if necessary.
 4. Now you are ready to include a reference of NimblePayments SDK in your project
