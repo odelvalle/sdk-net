@@ -1,7 +1,7 @@
 The NimblePayments SDK for NET
 ======================
 
-The NimblePayments SDK for NET makes it easy to add payment services to your e-commerce or site access. It connects your site to the NimblePayments REST API directly.
+The NimblePayments SDK for NET makes it easy to add payment services to your e-commerce. It connects your site to the NimblePayments REST API directly.
 
 ## Requirements
 
@@ -11,10 +11,10 @@ The NimblePayments SDK for NET makes it easy to add payment services to your e-c
 
 ### From source
 
-1. Download or clone this repo. You will obtain a file called ".zip". It include the SDK and integration tests.
+1. Download this repo. You will obtain a file called ".zip". It include the SDK and integration tests.
 2. Unzip ".zip" and open NET.SDK.Nimblepayments solution.
 2. Build solution and run test if necessary.
-4. Now you are ready to include a reference of NimblePayments SDK in your project
+4. Now you are ready to add a reference of NimblePayments SDK in your project
 
 ## Configuration
 
@@ -42,7 +42,7 @@ var nimbleApi = new NimblePayments(new NimbleAuth
     Enviroment = NimbleEnviroment.Sandbox
 });
 ```
-> The parameter 'Enviroment' is set to define the environment and has two possible values: `NimbleEnviroment.Sandbox` or `NimbleEnviroment.Real`. 'Sandbox' is used in the demo environment to make tests and 'real' must be set to work in the real environment. 
+> The propertie 'Enviroment' is set to define the environment and has two possible values: `NimbleEnviroment.Sandbox` or `NimbleEnviroment.Real`. 'Sandbox' is used in the demo environment to make tests and 'real' must be set to work in the real environment. 
 
 # Payment
 
@@ -56,7 +56,7 @@ A "Payment" term refers to object that contains all the data needed in order to 
 
 ## Register payment
 
-Create a `NimblePayments` instance and send the payment via `GetPaymentUrlAsync` method in `Payments`.
+Create a `NimblePayments` instance and send the payment via `GetPaymentUrlAsync` method in `Payments` object.
 
 ```csharp
 var operationResult = await this.nimbleApi.Payments.GetPaymentUrlAsync(new Payment
