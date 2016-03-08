@@ -23,13 +23,35 @@ The SDK zip from the GitHub repository contains the NimblePayments SDK for .NET 
 ## Working with the SDK
 Once you have completed the Installation and configuration processes, you are ready to generate a payment.
 
-### Payment
+### How to create a payment
 To generate a Payment you will need to:
 
 1. Create a `NimblePayments` instance using configuration `NimbleAuth` object
-2. Use the `GetPaymentUrlAsync` method in `Payments` object to send the payment
+2. Create a `Payment`object 
+2. Use the `Payments.GetPaymentUrlAsync` method to send the `Payment` object
 
-### Payment object
+#### How to create a NimbleAuth object
+In order to create a `NimblePayments` instance, you need to call the constructor providing a `NimbleAuth` object with the following properties:
+
+- `ClientId`. It refers to the API_Client _ID obtained when generating a payment gateway in the NimblePayments dashboard.
+- `ClientSecret`. It refers to the Client_Secret obtained when generating a payment gateway in the NimblePayments dashboard.
+- `Environment`. It refers to the environment in which to work. It has two possible values:
+    - `NimbleEnvironment.Sandbox`. It is used in the demo environment to make tests.
+    - `NimbleEnvironment.Real`. It is used to work in the real environment. 
+
+
+The `NimblePayments` class includes some configuration parameters necessary to connect to Nimblepayments API. To create `NimblePayments` object, call to the constructor passing `NimbleAuth` object   
+
+```csharp
+var nimbleApi = new NimblePayments(new NimbleAuth
+{
+    ClientId = "API_CLIENT_ID",
+    ClientSecret = "API_CLIENT_SECRET",
+    Environment = NimbleEnvironment.Sandbox
+});
+```
+
+#### How to create a Payment object
 A "`Payment`" term refers to an object that contains all the data needed in order to execute a payment:
 
 - `Amount`: it refers to the amount that has to be paid in cents avoiding the decimal digits. The real amount has to be multiplied by 100.
@@ -49,31 +71,7 @@ var payment = new Payment
 };
 ```
 
-### NimbleAuth Object
-In order to create a NimblePayments instance, you need to call the constructor providing a NimbleAuth object with the following properties:
-
-- `ClientId`. It refers to the API_Client _ID obtained when generating a payment gateway in the NimblePayments dashboard.
-- `ClientSecret`. It refers to the Client_Secret obtained when generating a payment gateway in the NimblePayments dashboard.
-- `Environment`. It refers to the environment in which to work. It has two possible values:
-    - `NimbleEnvironment.Sandbox`. It is used in the demo environment to make tests.
-    - `NimbleEnvironment.Real`. It is used to work in the real environment. 
-
-
-The `NimblePayments` class includes some configuration parameters necessary to connect to Nimblepayments API. To create `NimblePayments` object, call to the constructor passing `NimbleAuth` object   
-
-```csharp
-var nimbleApi = new NimblePayments(new NimbleAuth
-{
-    ClientId = "API_CLIENT_ID",
-    ClientSecret = "API_CLIENT_SECRET",
-    Environment = NimbleEnvironment.Sandbox
-});
-```
 ## Example of a Payment generation
-To generate a Payment you will need to:
-
-- Create a NimblePayments instance
-- Use the GetPaymentUrlAsync method in Payments object to send the payment
 
 ```csharp
 var nimbleApi = new NimblePayments(new NimbleAuth
