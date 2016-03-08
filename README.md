@@ -26,8 +26,8 @@ Once you have completed the Installation and configuration processes, you are re
 ### Payment
 To generate a Payment you will need to:
 
-1- Create a `NimblePayments` instance using configuration `NimbleAuth` object
-2- Use the `GetPaymentUrlAsync` method in `Payments` object to send the payment
+1. Create a `NimblePayments` instance using configuration `NimbleAuth` object
+2. Use the `GetPaymentUrlAsync` method in `Payments` object to send the payment
 
 ### Payment object
 A "`Payment`" term refers to an object that contains all the data needed in order to execute a payment:
