@@ -5,7 +5,7 @@
     using Base;
     using RestClient;
 
-    public enum NimbleEnviroment
+    public enum NimbleEnvironment
     {
         Sandbox,
         Real    
@@ -25,23 +25,23 @@
 
         internal EnviromentManager(ApiContext apiContext): base(apiContext)
         {
-            var currentEnviroment = apiContext.NimbleAuth.Enviroment;
+            var currentEnviroment = apiContext.NimbleAuth.Environment;
             this.apiContext = apiContext;
 
-            this.baseUrl = $"{(currentEnviroment == NimbleEnviroment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
+            this.baseUrl = $"{(currentEnviroment == NimbleEnvironment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
         }
 
         internal string Auth2 => $"{AuthUrlNimblepayment}/tsec/token";
         internal string SimplePayment => $"{this.baseUrl}/payments";
         internal string UpdatePayment => $"{this.baseUrl}/payments/{{id}}";
 
-        public async Task<OperationResult> VerifyCredentialsAsync(NimbleEnviroment nimbleEnviroment)
+        public async Task<OperationResult> VerifyCredentialsAsync(NimbleEnvironment nimbleEnvironment)
         {
             await this.GetApplicationTsecAsync();
 
-            var enviromentUrl = $"{(nimbleEnviroment == NimbleEnviroment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
+            var enviromentUrl = $"{(nimbleEnvironment == NimbleEnvironment.Real ? BaseUrlNimblepaymentReal : BaseUrlNimblepaymentSandbox)}";
             var request = new RestRequest($"{enviromentUrl}/check", Method.GET);
-            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationTsec}");
+            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationToken}");
 
             var res = await this.apiContext.RestClient.Execute<NimbleApiResult<NullContentResult>>(request);
             return this.EnsureNimbleOperationResult(res);

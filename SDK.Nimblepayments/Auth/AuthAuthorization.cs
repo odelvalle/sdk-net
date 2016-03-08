@@ -16,12 +16,12 @@
         internal AuthAuthorization(ApiContext apiContext)
         {
             this.apiContext = apiContext;
-            this.apiContext.NimbleAuth.BasicAuthorization = Base64Encode($"{apiContext.NimbleAuth.ClientId}:{apiContext.NimbleAuth.ClientSecrect}");
+            this.apiContext.NimbleAuth.BasicAuthorization = Base64Encode($"{apiContext.NimbleAuth.ClientId}:{apiContext.NimbleAuth.ClientSecret}");
         }
 
         protected async Task<OperationResult<HttpStatusCode>> GetApplicationTsecAsync()
         {
-            if (this.apiContext.NimbleAuth.TsecIsValid) return new OperationResult<HttpStatusCode> { HttpStatusCode = HttpStatusCode.OK };
+            if (this.apiContext.NimbleAuth.TokenIsValid) return new OperationResult<HttpStatusCode> { HttpStatusCode = HttpStatusCode.OK };
 
             var request = new RestRequest(this.apiContext.EnviromentManager.Auth2, Method.POST, ContentType.Json);
             request.AddParameter("grant_type", "client_credentials", ParameterType.QueryString);
@@ -44,8 +44,8 @@
                 HttpStatusCode = res.HttpStatusCode
             };
 
-            this.apiContext.NimbleAuth.ApplicationTsec = res.Result.Token;
-            this.apiContext.NimbleAuth.TsecExpireDateTime = DateTime.Now.AddSeconds(res.Result.ExpireIn);
+            this.apiContext.NimbleAuth.ApplicationToken = res.Result.Token;
+            this.apiContext.NimbleAuth.TokenExpirationTime = DateTime.Now.AddSeconds(res.Result.ExpireIn);
 
             return new OperationResult<HttpStatusCode> { HttpStatusCode = HttpStatusCode.OK };
         }

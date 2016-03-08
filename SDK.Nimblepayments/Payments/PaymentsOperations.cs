@@ -28,7 +28,7 @@ namespace SDK.Nimblepayments.Payments
             request.AddParameter(payment);
 
             request.Header.Add("Accept-Language", language.ToString().ToLower());
-            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationTsec}");
+            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationToken}");
 
             var response = await this.apiContext.RestClient.Execute<NimbleApiResult<UrlPayment>>(request);
             return this.EnsureNimbleOperationResult(response);
@@ -42,7 +42,7 @@ namespace SDK.Nimblepayments.Payments
             request.AddParameter("id", id, ParameterType.UrlSegment);
             request.AddParameter(order);
 
-            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationTsec}");
+            request.Header.Add("Authorization", $"tsec {this.apiContext.NimbleAuth.ApplicationToken}");
 
             var response = await this.apiContext.RestClient.Execute<NimbleApiResult<NullContentResult>>(request);
             return this.EnsureNimbleOperationResult(response);

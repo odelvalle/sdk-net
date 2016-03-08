@@ -21,10 +21,10 @@
             this.nimbleApi = new NimblePayments(new NimbleAuth
             {
                 ClientId = "EB648839EA8A49E695AD49F3865B27A9",
-                ClientSecrect = "4BIfDXZm#pQxoBwW*kUS*nOR70wSsbTnhdbjhfy@90scweQWL7V@3195xIYvvmlG",
+                ClientSecret = "4BIfDXZm#pQxoBwW*kUS*nOR70wSsbTnhdbjhfy@90scweQWL7V@3195xIYvvmlG",
 
-                // ATTENTION! Only use Sandbox Enviroment to run integration test.
-                Enviroment = NimbleEnviroment.Sandbox
+                // ATTENTION! Only use Sandbox Environment to run integration test.
+                Environment = NimbleEnvironment.Sandbox
             });
         }
 
@@ -34,7 +34,7 @@
             OperationResult validateResult = null;
             Task.Run(async () =>
             {
-                validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnviroment.Sandbox);
+                validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnvironment.Sandbox);
 
             }).GetAwaiter().GetResult();
 
@@ -50,7 +50,7 @@
             OperationResult validateResult = null;
             Task.Run(async () =>
             {
-                validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnviroment.Real);
+                validateResult = await this.nimbleApi.NimbleEnviroment.VerifyCredentialsAsync(NimbleEnvironment.Real);
 
             }).GetAwaiter().GetResult();
 
@@ -115,6 +115,5 @@
 
             Assert.AreEqual(HttpStatusCode.OK, updateResult.HttpStatusCode);
         }
-
     }
 }

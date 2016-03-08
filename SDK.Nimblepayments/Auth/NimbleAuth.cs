@@ -7,14 +7,14 @@
     public class NimbleAuth
     {
         public string ClientId { get; set; }
-        public string ClientSecrect { get; set; }
-        public NimbleEnviroment Enviroment { get; set; }
+        public string ClientSecret { get; set; }
+        public NimbleEnvironment Environment { get; set; }
 
-        // Read only properties
-        public string BasicAuthorization { get; internal set; }
-        public string ApplicationTsec { get; internal set; } 
-        internal DateTime TsecExpireDateTime { get; set; }
+        public string ApplicationToken { get; set; } 
+        public DateTime TokenExpirationTime { get; set; }
 
-        public bool TsecIsValid => DateTime.Now.AddSeconds(-60) <= this.TsecExpireDateTime;
+        public bool TokenIsValid => DateTime.Now.AddSeconds(-60) <= this.TokenExpirationTime;
+
+        internal string BasicAuthorization { get; set; }
     }
 }
