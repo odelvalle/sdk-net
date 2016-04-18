@@ -12,5 +12,7 @@ namespace SDK.Nimblepayments.Payments
     {
         [JsonProperty(PropertyName = "customerData")]
         public string CustomerTransaction { get; set; }
+        [JsonProperty(PropertyName = "clientId")]
+        public string User { get; set; }
     }
 }

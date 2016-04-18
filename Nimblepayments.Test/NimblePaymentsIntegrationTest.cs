@@ -20,8 +20,8 @@
         {
             this.nimbleApi = new NimblePayments(new NimbleAuth
             {
-                ClientId = "EB648839EA8A49E695AD49F3865B27A9",
-                ClientSecret = "4BIfDXZm#pQxoBwW*kUS*nOR70wSsbTnhdbjhfy@90scweQWL7V@3195xIYvvmlG",
+                ClientId = "6A6364ED06D813D376A61BB3F932B3BC",
+                ClientSecret = "558OJksE6guNDcmc&%wQrEQL@$xByTHwwRxzyGI4uoGE5*41cj&mXbJc@PmxWLhA",
 
                 // ATTENTION! Only use Sandbox Environment to run integration test.
                 Environment = NimbleEnvironment.Sandbox
@@ -72,6 +72,7 @@
                     Currency = "EUR",
                     Amount = 1000,
                     CustomerTransaction = "00-0000-00",
+                    User = "111111"
                 }, PaymentLanguageUi.Es);
 
             }).GetAwaiter().GetResult();
@@ -96,6 +97,7 @@
                     Currency = "EUR",
                     Amount = 1000,
                     CustomerTransaction = "00-0000-00",
+                    User = "111111"
                 }, PaymentLanguageUi.Es);
 
             }).GetAwaiter().GetResult();
@@ -105,7 +107,7 @@
             {
                 updateResult = await this.nimbleApi.Payments.UpdatePaymentAsync(payment.Result.Id, new Order
                 {
-                    CustomerTransaction = "11-1111-11",
+                    CustomerTransaction = "11-1111-11"
                 });
 
             }).GetAwaiter().GetResult();
